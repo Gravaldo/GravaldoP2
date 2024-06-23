@@ -1,0 +1,195 @@
+/* Reset and global styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Light theme variables */
+:root {
+    --background-color: #fff7e6; /* Light warm background */
+    --text-color: #333;
+    --primary-color: #ff5722; /* Warm red-orange */
+    --secondary-color: #ff8a65; /* Warm lighter orange */
+    --sidebar-bg: #ffe0b2; /* Light warm beige */
+    --sidebar-hover-bg: #ffcc80; /* Light warm orange */
+    --sidebar-hover-color: #333;
+    --input-background: #fff;
+    --input-border: #ccc;
+    --button-background: #ff5722;
+    --button-hover-background: #e64a19;
+    --button-text-color: #fff;
+    --form-background: #fff;
+}
+
+/* Dark theme variables */
+body.dark-mode {
+    --background-color: #121212;
+    --text-color: #e0e0e0;
+    --primary-color: #bb86fc; /* Purple */
+    --secondary-color: #03dac6; /* Teal */
+    --sidebar-bg: #1e1e1e; /* Dark grey */
+    --sidebar-hover-bg: #333; /* Darker grey */
+    --sidebar-hover-color: #e0e0e0;
+    --input-background: #333;
+    --input-border: #444;
+    --button-background: #bb86fc;
+    --button-hover-background: #3700b3;
+    --button-text-color: #fff;
+    --form-background: #1e1e1e;
+}
+
+/* Header and footer styles */
+header, footer {
+    background-color: var(--primary-color);
+    color: white;
+    text-align: center;
+    padding: 1em 0;
+}
+
+/* Navigation styles */
+nav {
+    background: var(--secondary-color);
+    color: white;
+    overflow: hidden;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    padding: 0 1em;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    display: inline-block;
+    padding: 1em 0;
+}
+
+/* Sidebar styles */
+aside {
+    float: left;
+    width: 20%;
+    background: var(--sidebar-bg);
+    padding: 1em;
+    height: 100vh;
+    overflow: auto;
+}
+
+aside h2 {
+    text-align: center;
+}
+
+aside ul {
+    list-style: none;
+    padding: 0;
+}
+
+aside ul li {
+    margin: 0.5em 0;
+}
+
+aside ul li a {
+    text-decoration: none;
+    color: var(--sidebar-hover-color);
+    display: block;
+    padding: 0.5em;
+    background: var(--sidebar-bg);
+    border-radius: 5px;
+}
+
+aside ul li a:hover {
+    background: var(--sidebar-hover-bg);
+}
+
+/* Main content styles */
+main {
+    float: left;
+    width: 75%;
+    padding: 1em;
+    background: var(--background-color);
+    color: var(--text-color);
+}
+
+main h2 {
+    margin-bottom: 1em;
+}
+
+/* Form styles */
+form {
+    background: var(--form-background);
+    padding: 2em;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+    display: block;
+    margin-top: 1em;
+    color: var(--text-color);
+}
+
+form input, form select, form textarea {
+    width: 100%;
+    padding: 0.5em;
+    margin-top: 0.5em;
+    background: var(--input-background);
+    border: 1px solid var(--input-border);
+    border-radius: 5px;
+    color: var(--text-color);
+}
+
+form input[type="submit"] {
+    width: auto;
+    background: var(--button-background);
+    color: var(--button-text-color);
+    border: none;
+    padding: 0.7em 1.5em;
+    cursor: pointer;
+    margin-top: 1em;
+}
+
+form input[type="submit"]:hover {
+    background: var(--button-hover-background);
+}
+
+/* Footer styles */
+footer {
+    clear: both;
+    padding: 1em 0;
+    background: var(--primary-color);
+    color: #fff;
+    text-align: center;
+}
+
+/* Dark mode toggle button */
+.toggle-button {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background: var(--button-background);
+    color: #fff;
+    border: none;
+    padding: 0.5em 1em;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.toggle-button:hover {
+    background: var(--button-hover-background);
+}
