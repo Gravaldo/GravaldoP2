@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table with Background Color Change</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: left;
+        }
+        .color-button {
+            margin: 5px;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+        }
+        tr:hover {
+            background-color: lightgray;
+        }
+    </style>
+</head>
+<body>
+    <h1>Table with Background Color Change</h1>
+    <div id="color-buttons">
+        <button class="color-button" style="background-color: lightblue;" onclick="changeColor('lightblue')">Light Blue</button>
+        <button class="color-button" style="background-color: lightgreen;" onclick="changeColor('lightgreen')">Light Green</button>
+        <button class="color-button" style="background-color: lightyellow;" onclick="changeColor('lightyellow')">Light Yellow</button>
+        <button class="color-button" style="background-color: lightpink;" onclick="changeColor('lightpink')">Light Pink</button>
+        <button class="color-button" style="background-color: orange;" onclick="changeColor('orange')">Orange</button>
+        <button class="color-button" style="background-color: purple;" onclick="changeColor('purple')">Purple</button>
+        <button class="color-button" style="background-color: cyan;" onclick="changeColor('cyan')">Cyan</button>
+        <button class="color-button" style="background-color: magenta;" onclick="changeColor('magenta')">Magenta</button>
+        <button class="color-button" style="background-color: brown;" onclick="changeColor('brown')">Brown</button>
+    </div>
+    <table id="myTable">
+        <thead>
+            <tr>
+                <th onclick="sortTable(0)">Header 1</th>
+                <th onclick="sortTable(1)">Header 2</th>
+                <th onclick="sortTable(2)">Header 3</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Data 1</td>
+                <td>Data 2</td>
+                <td>Data 3</td>
+            </tr>
+            <tr>
+                <td>Data 4</td>
+                <td>Data 5</td>
+                <td>Data 6</td>
+            </tr>
+            <tr>
+                <td>Data 7</td>
+                <td>Data 8</td>
+                <td>Data 9</td>
+            </tr>
+        </tbody>
+    </table>
+    <div>
+        <button onclick="addRow()">Add Row</button>
+    </div>
+    <div>
+        <img id="slideshow" src="images/image1.png" alt="Slideshow Image" width="500">
+    </div>
+    <script>
+        function changeColor(color) {
+            document.getElementById('myTable').style.backgroundColor = color;
+        }
+
+        document.querySelectorAll('td').forEach(function(cell) {
+            cell.addEventListener('click', function() {
+                alert('Cell content: ' + this.textContent);
+            });
+        });
+
+        document.querySelectorAll('td').forEach(function(cell) {
+            cell.addEventListener('dblclick', function() {
+                this.textContent = this.textContent.toUpperCase();
+            });
+        });
+
+        function addRow() {
+            let table = document.getElementById('myTable').getElementsByTagName('tbody')[0];
+            let newRow = table.insertRow();
+            for (let i = 0; i < 3; i++) {
+                let newCell = newRow.insertCell();
+                newCell.textContent = 'New Data ' + (i + 1);
+            }
+        }
+
+        function sortTable(columnIndex) {
+            let table = document.getElementById('myTable');
+            let rows = Array.from(table.rows).slice(1);
+            let sortedRows = rows.sort((a, b) => a.cells[columnIndex].innerText > b.cells[columnIndex].innerText ? 1 : -1);
+            sortedRows.forEach(row => table.appendChild(row));
+        }
+
+        let images = ["images/image1.png", "images/image2.png", "images/image3.jpg"];
+        let currentIndex = 0;
+
+        function showNextImage() {
+            currentIndex = (currentIndex + 1) % images.length;
+            document.getElementById('slideshow').src = images[currentIndex];
+        }
+
+        setInterval(showNextImage, 2000); // Change image every 2 seconds
+    </script>
+</body>
+</html>
